@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Spinner
+        style="@style/Material.Widget.Spinner"
+        android:id="@+id/spinner"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/sum"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        app:et_labelTextSize="20dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:inputType="text"
+        android:hint="Input the number you want"
+        app:et_inputId="@+id/textfield_et_label_input"
+        app:et_supportMode="none"/>
+
+    <Button
+        android:id="@+id/send_btn"
+        android:text="Add to List"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
