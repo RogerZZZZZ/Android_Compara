@@ -321,7 +321,6 @@ public class ProductListAdapter
         @Override
         protected void onPerformAction() {
             super.onPerformAction();
-
             mAdapter.mProvider.removeItem(mPosition);
             mAdapter.notifyItemRemoved(mPosition);
         }

@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.rogerzzzz.compara.ProductListActivity;
+import com.example.rogerzzzz.compara.CollectionActivity;
 import com.example.rogerzzzz.compara.R;
 import com.example.rogerzzzz.compara.adapter.ProductListAdapter;
 import com.example.rogerzzzz.compara.common.data.AbstractDataProvider;
@@ -28,10 +28,10 @@ import com.h6ah4i.android.widget.advrecyclerview.touchguard.RecyclerViewTouchAct
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils;
 
 /**
- * Created by rogerzzzz on 2016/12/6.
+ * Created by rogerzzzz on 2016/12/7.
  */
 
-public class ProductListFragment extends Fragment {
+public class CollectionFragment extends Fragment {
     private RecyclerView                        mRecyclerView;
     private RecyclerView.LayoutManager          mLayoutManager;
     private ProductListAdapter                  mAdapter;
@@ -40,7 +40,7 @@ public class ProductListFragment extends Fragment {
     private RecyclerViewSwipeManager            mRecyclerViewSwipeManager;
     private RecyclerViewTouchActionGuardManager mRecyclerViewTouchActionGuardManager;
 
-    public ProductListFragment() {
+    public CollectionFragment() {
         super();
     }
 
@@ -75,12 +75,12 @@ public class ProductListFragment extends Fragment {
         myItemAdapter.setEventListener(new ProductListAdapter.EventListener() {
             @Override
             public void onItemRemoved(int position) {
-                ((ProductListActivity) getActivity()).onItemRemoved(position);
+                ((CollectionActivity) getActivity()).onItemRemoved(position);
             }
 
             @Override
             public void onItemPinned(int position) {
-                ((ProductListActivity) getActivity()).onItemPinned(position);
+                ((CollectionActivity) getActivity()).onItemPinned(position);
             }
 
             @Override
@@ -157,7 +157,7 @@ public class ProductListFragment extends Fragment {
     private void onItemViewClick(View v, boolean pinned) {
         int position = mRecyclerView.getChildAdapterPosition(v);
         if (position != RecyclerView.NO_POSITION) {
-            ((ProductListActivity) getActivity()).onItemClicked(position);
+            ((CollectionActivity) getActivity()).onItemClicked(position);
         }
     }
 
@@ -175,7 +175,7 @@ public class ProductListFragment extends Fragment {
     }
 
     public AbstractDataProvider getDataProvider() {
-        return ((ProductListActivity) getActivity()).getDataProvider();
+        return ((CollectionActivity) getActivity()).getDataProvider();
     }
 
     public void notifyItemChanged(int position) {

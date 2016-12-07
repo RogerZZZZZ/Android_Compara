@@ -24,6 +24,26 @@
 
     <include layout="@layout/content_main"/>
 
+
+    <RelativeLayout
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/findCheap"
+            android:background="@color/bg_swipe_group_item_dismiss"
+            android:textColor="#fff"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="40dp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:text="@string/find_the_cheapest"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+    </RelativeLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

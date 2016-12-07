@@ -1,10 +1,11 @@
 package com.example.rogerzzzz.compara;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,31 +13,39 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.rogerzzzz.compara.common.data.AbstractDataProvider;
 import com.example.rogerzzzz.compara.common.fragment.ExampleDataProviderFragment;
 import com.example.rogerzzzz.compara.common.fragment.ItemPinnedMessageDialogFragment;
+import com.example.rogerzzzz.compara.common.utils.SharedPerferenceUtils;
 import com.example.rogerzzzz.compara.fragment.ProductListFragment;
-import com.example.rogerzzzz.compara.models.Goods;
 
-public class ProductListActivity extends AppCompatActivity implements ItemPinnedMessageDialogFragment.EventListener {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductListActivity extends AppCompatActivity implements ItemPinnedMessageDialogFragment.EventListener, View.OnClickListener {
     private static final String FRAGMENT_TAG_DATA_PROVIDER = "data provider";
     private static final String FRAGMENT_LIST_VIEW = "list view";
-    private static final String FRAGMENT_TAG_ITEM_PINNED_DIALOG = "item pinned dialog";
+    private SharedPreferences        sharedPreferences;
+    private SharedPreferences.Editor editor;
+
+    private Button findCheapBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        findCheapBtn = (Button) findViewById(R.id.findCheap);
+        findCheapBtn.setOnClickListener(this);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 Intent intent = new Intent(ProductListActivity.this, ItemEditActivity.class);
                 startActivityForResult(intent, 0);
             }
@@ -50,6 +59,20 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
                     .add(R.id.container, new ProductListFragment(), FRAGMENT_LIST_VIEW)
                     .commit();
         }
+
+        sharedPreferences = getSharedPreferences("compara", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(getDataProvider().getCount() == 0){
+            Snackbar.make(getWindow().getDecorView(), "There is no products in the cart", Snackbar.LENGTH_LONG).show();
+        }else{
+            findCheapBtn.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -62,7 +85,9 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_collection) {
+            Intent intent = new Intent(ProductListActivity.this, CollectionActivity.class);
+            startActivityForResult(intent, 0);
             return true;
         }
 
@@ -73,7 +98,6 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == 0 && data != null){
-            Goods goods = (Goods) data.getSerializableExtra("goods");
             getSupportFragmentManager().findFragmentByTag("list view").onActivityResult(requestCode, resultCode, data);
         }
     }
@@ -105,12 +129,13 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
      * @param position The position of the item within data set
      */
     public void onItemPinned(int position) {
-        final DialogFragment dialog = ItemPinnedMessageDialogFragment.newInstance(position);
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(dialog, FRAGMENT_TAG_ITEM_PINNED_DIALOG)
-                .commit();
+        String productName = getDataProvider().getItem(position).getProductName();
+        if(SharedPerferenceUtils.containValue(sharedPreferences, productName)){
+            Snackbar.make(getWindow().getDecorView(), "Have already put into collection list", Snackbar.LENGTH_LONG).show();
+        }else{
+            SharedPerferenceUtils.saveItem(sharedPreferences, productName);
+            Snackbar.make(getWindow().getDecorView(), "Successfully put it into collection list", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     /**
@@ -151,4 +176,21 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
         return ((ExampleDataProviderFragment) fragment).getDataProvider();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.findCheap:
+                Intent intent = new Intent(ProductListActivity.this, SupermarketActivity.class);
+                List<String> productList = new ArrayList<>();
+                int listSize = getDataProvider().getCount();
+                for(int i = 0; i < listSize; i++){
+                    productList.add(getDataProvider().getItem(i).getProductName());
+                }
+                intent.putExtra("product_list", (Serializable) productList);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
 }

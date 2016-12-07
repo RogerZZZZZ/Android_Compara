@@ -14,6 +14,8 @@ public abstract class AbstractDataProvider {
 
         public abstract int getNum();
 
+        public abstract String getProductName();
+
         public abstract void setPinned(boolean pinned);
 
         public abstract boolean isPinned();

@@ -1,18 +1,37 @@
 package com.example.rogerzzzz.compara.common.data;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.example.rogerzzzz.compara.CollectionActivity;
+import com.example.rogerzzzz.compara.common.utils.SharedPerferenceUtils;
 import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeManager;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ExampleDataProvider extends AbstractDataProvider {
+import static com.example.rogerzzzz.compara.R.id.sum;
+
+/**
+ * Created by rogerzzzz on 2016/12/6.
+ */
+
+public class CollectionDataProvider extends AbstractDataProvider{
     private List<ConcreteData> mData;
     private ConcreteData       mLastRemovedData;
     private int mLastRemovedPosition = -1;
+    private CollectionActivity activity;
+    private SharedPreferences        sharedPreferences;
+    private SharedPreferences.Editor editor;
 
-    public ExampleDataProvider() {
+    public CollectionDataProvider(SharedPreferences sp, CollectionActivity activity) {
         mData = new LinkedList<>();
+        mData = SharedPerferenceUtils.toList(sp);
+        this.activity = activity;
+        sharedPreferences = activity.getSharedPreferences("compara", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @Override
@@ -21,7 +40,7 @@ public class ExampleDataProvider extends AbstractDataProvider {
     }
 
     @Override
-    public Data getItem(int index) {
+    public AbstractDataProvider.Data getItem(int index) {
         if (index < 0 || index >= getCount()) {
             throw new IndexOutOfBoundsException("index = " + index);
         }
@@ -88,35 +107,34 @@ public class ExampleDataProvider extends AbstractDataProvider {
     @Override
     public void removeItem(int position) {
         //noinspection UnnecessaryLocalVariable
+
+        String target = activity.getDataProvider().getItem(position).getProductName();
+        SharedPerferenceUtils.removeItem(sharedPreferences, target);
         final ConcreteData removedItem = mData.remove(position);
 
         mLastRemovedData = removedItem;
         mLastRemovedPosition = position;
     }
 
-    public static final class ConcreteData extends Data {
+    public static final class ConcreteData extends AbstractDataProvider.Data {
 
         private final long    mId;
         private final String  mText;
         private final int     mViewType;
         private       boolean mPinned;
         private String productName;
-        private int sum;
 
-        ConcreteData(int sum, int viewType, String text, int swipeReaction) {
-            mId = sum;
-            this.sum = sum;
-            productName = text;
+        public ConcreteData(int id, int viewType, String text, int swipeReaction) {
+            mId = id;
             mViewType = viewType;
-            mText = makeText(sum, text, swipeReaction);
+            productName = text;
+            mText = makeText(text, swipeReaction);
         }
 
-        private static String makeText(int sum, String text, int swipeReaction) {
+        private static String makeText(String text, int swipeReaction) {
             final StringBuilder sb = new StringBuilder();
 
             sb.append(text);
-            sb.append(" * ");
-            sb.append(sum + "");
 
             return sb.toString();
         }
@@ -166,12 +184,5 @@ public class ExampleDataProvider extends AbstractDataProvider {
             mPinned = pinned;
         }
 
-        public int getSum() {
-            return sum;
-        }
-
-        public void setSum(int sum) {
-            this.sum = sum;
-        }
     }
 }

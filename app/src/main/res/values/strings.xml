@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Compara</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_collection">Collection</string>
     <string name="dialog_message_item_pinned">Item pinned! (position = %1$d)</string>
     <string name="snack_bar_text_item_removed">1 item removed</string>
     <string name="snack_bar_action_undo">UNDO</string>
+    <string name="find_the_cheapest">Find in Supermarket</string>
 </resources>
