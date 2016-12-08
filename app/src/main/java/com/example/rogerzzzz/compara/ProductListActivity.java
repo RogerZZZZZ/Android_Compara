@@ -84,11 +84,15 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_collection) {
-            Intent intent = new Intent(ProductListActivity.this, CollectionActivity.class);
-            startActivityForResult(intent, 0);
-            return true;
+        switch(id){
+            case R.id.action_collection:
+                Intent intent = new Intent(ProductListActivity.this, CollectionActivity.class);
+                startActivityForResult(intent, 0);
+                return true;
+            case R.id.action_unit:
+                Intent intent1 = new Intent(ProductListActivity.this, UnitPriceActivity.class);
+                startActivity(intent1);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
