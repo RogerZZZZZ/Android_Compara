@@ -41,10 +41,13 @@
                   android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="portrait"/>
         <activity android:name=".MapActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="portrait"/>
         <activity android:name=".SupermarketActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="portrait"/>
         <activity android:name=".UnitPriceActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="portrait"/>
         <activity android:name=".CollectionActivity"
                   android:theme="@style/AppTheme.NoActionBar"

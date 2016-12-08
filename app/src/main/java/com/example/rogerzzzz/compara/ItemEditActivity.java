@@ -49,6 +49,7 @@ public class ItemEditActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.item_edit_activity);
         et_sum = findEditText(sum);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Add Item");
         setSupportActionBar(toolbar);
         btn_send = (Button) findViewById(R.id.send_btn);
         btn_send.setOnClickListener(this);

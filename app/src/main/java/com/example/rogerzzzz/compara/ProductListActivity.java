@@ -38,6 +38,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Cart");
         findCheapBtn = (Button) findViewById(R.id.findCheap);
         findCheapBtn.setOnClickListener(this);
         setSupportActionBar(toolbar);

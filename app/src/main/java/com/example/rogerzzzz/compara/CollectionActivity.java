@@ -34,6 +34,7 @@ public class CollectionActivity extends AppCompatActivity implements ItemPinnedM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collection_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Collection List");
         setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
