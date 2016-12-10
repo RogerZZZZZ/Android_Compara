@@ -15,6 +15,18 @@ public class UnitPriceComparator {
 		unitPairsMapping.add(new UnitPairs(new Unit(1,"m"), new Unit(100,"cm")));
 		unitPairsMapping.add(new UnitPairs(new Unit(1,"m"), new Unit(1000,"mm")));
 		unitPairsMapping.add(new UnitPairs(new Unit(1,"cm"), new Unit(10,"mm")));
+
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"kg"), new Unit(1,"kg")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"g"), new Unit(1,"g")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"L"), new Unit(1,"L")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"ml"), new Unit(1,"ml")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"cm3"), new Unit(1,"cm3")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"lb"), new Unit(1,"lb")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"dozen"), new Unit(1,"dozen")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"unit"), new Unit(1,"unit")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"m"), new Unit(1,"m")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"cm"), new Unit(1,"cm")));
+		unitPairsMapping.add(new UnitPairs(new Unit(1,"mm"), new Unit(1,"mm")));
 	}
 	
 	

@@ -43,7 +43,7 @@ public class UnitSpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater _LayoutInflater=LayoutInflater.from(mContext);
-        convertView=_LayoutInflater.inflate(R.layout.spinner_item_layout, null);
+        convertView=_LayoutInflater.inflate(R.layout.spinner_item_layout2, null);
         if(convertView!=null) {
             TextView _TextView1=(TextView)convertView.findViewById(R.id.text);
             _TextView1.setText(list.get(position));

@@ -13,15 +13,13 @@ public class UnitPriceCompResult {
 	
 	public String CompareUnit;
 
-	
-	
 	public String getMsg(){
 		if(cheaperPrd == 0){
-			return cheaperPrdName + " and " + expensivePrdName + " with the same unit price";
+			return  "Products with the same unit price";
 		}else if(cheaperPrd == -1){
-			return cheaperPrdName + " and " + expensivePrdName + " cannot be compared";
+			return " cannot be compared";
 		}else{
-			return cheaperPrdName + " cheaper than " + expensivePrdName +" for " + getUnitPriceDifference() + " per " +CompareUnit;
+			return "Product " + cheaperPrd + " is cheaper for " + getUnitPriceDifference() + " per " +CompareUnit + " and money save is " + getMoneySave();
 		}
 	}
 	

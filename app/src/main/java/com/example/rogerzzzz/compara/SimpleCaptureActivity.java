@@ -1,11 +1,15 @@
 package com.example.rogerzzzz.compara;
 
 import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.example.rogerzzzz.compara.models.ProductItem;
+
+import java.util.List;
 
 import io.github.xudaojie.qrcodelib.CaptureActivity;
 
@@ -15,8 +19,8 @@ import io.github.xudaojie.qrcodelib.CaptureActivity;
 
 public class SimpleCaptureActivity extends CaptureActivity {
     protected Activity mActivity = this;
-
-    private AlertDialog mDialog;
+    private RequestQueue      queue;
+    private List<ProductItem> list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,27 +29,19 @@ public class SimpleCaptureActivity extends CaptureActivity {
     }
 
     @Override
-    protected void handleResult(String resultString) {
+    protected void handleResult(final String resultString) {
         if (TextUtils.isEmpty(resultString)) {
             Toast.makeText(mActivity, io.github.xudaojie.qrcodelib.R.string.scan_failed, Toast.LENGTH_SHORT).show();
             restartPreview();
         } else {
-            if (mDialog == null) {
-                mDialog = new AlertDialog.Builder(mActivity)
-                        .setMessage(resultString)
-                        .setPositiveButton("确定", null)
-                        .create();
-                mDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        restartPreview();
-                    }
-                });
-            }
-            if (!mDialog.isShowing()) {
-                mDialog.setMessage(resultString);
-                mDialog.show();
-            }
+            showResultWindow(resultString);
         }
+    }
+
+    private void showResultWindow(String detail){
+        Intent intent = new Intent(SimpleCaptureActivity.this, ProductListActivity.class);
+        intent.putExtra("code", detail);
+        this.setResult(1, intent);
+        finish();
     }
 }

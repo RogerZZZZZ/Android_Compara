@@ -37,36 +37,55 @@
                 android:layout_marginRight="20dp"
                 android:layout_height="30dp"/>
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
+            <LinearLayout
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:et_labelTextSize="20dp"
                 android:layout_marginTop="15dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:inputType="text"
-                android:hint="Input the price"
-                app:et_inputId="@+id/textfield_et_label_input"
-                app:et_supportMode="none"/>
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Price:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/sum"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                <com.rey.material.widget.EditText
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    app:et_labelTextSize="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:inputType="text"
+                    android:hint="Input the price"
+                    app:et_inputId="@+id/textfield_et_label_input"
+                    app:et_supportMode="none"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:et_labelTextSize="20dp"
                 android:layout_marginTop="15dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:inputType="text"
-                android:hint="Input the sum"
-                app:et_inputId="@+id/textfield_et_label_input"
-                app:et_supportMode="none"/>
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Sum:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
 
+                <com.rey.material.widget.EditText
+                    android:id="@+id/sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    app:et_labelTextSize="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:inputType="text"
+                    android:hint="Input the sum"
+                    app:et_inputId="@+id/textfield_et_label_input"
+                    app:et_supportMode="none"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -83,35 +102,55 @@
                 android:layout_marginRight="20dp"
                 android:layout_height="30dp"/>
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/price1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
+            <LinearLayout
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:et_labelTextSize="20dp"
                 android:layout_marginTop="15dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:inputType="text"
-                android:hint="Input the price"
-                app:et_inputId="@+id/textfield_et_label_input"
-                app:et_supportMode="none"/>
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Price:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/sum1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                <com.rey.material.widget.EditText
+                    android:id="@+id/price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    app:et_labelTextSize="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:inputType="text"
+                    android:hint="Input the price"
+                    app:et_inputId="@+id/textfield_et_label_input"
+                    app:et_supportMode="none"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:et_labelTextSize="20dp"
                 android:layout_marginTop="15dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:inputType="text"
-                android:hint="Input the sum"
-                app:et_inputId="@+id/textfield_et_label_input"
-                app:et_supportMode="none"/>
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Sum:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+                <com.rey.material.widget.EditText
+                    android:id="@+id/sum1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    app:et_labelTextSize="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:inputType="text"
+                    android:hint="Input the sum"
+                    app:et_inputId="@+id/textfield_et_label_input"
+                    app:et_supportMode="none"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

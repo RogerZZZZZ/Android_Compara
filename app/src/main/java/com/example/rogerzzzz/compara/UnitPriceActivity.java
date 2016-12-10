@@ -77,8 +77,7 @@ public class UnitPriceActivity extends AppCompatActivity implements View.OnClick
                 String unit1 = (String) spinner1.getSelectedItem();
                 UnitPriceComparator unitPrice = new UnitPriceComparator();
                 UnitPriceCompResult result = unitPrice.UnitPriceCompare("A", price, sum, unit, "B", price1, sum1, unit1);
-                String cheaperOne = result.cheaperPrdName;
-                Snackbar.make(getWindow().getDecorView(), (cheaperOne.equals("A") ? "First" : "Second") + " is cheaper", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getWindow().getDecorView(), result.getMsg(), Snackbar.LENGTH_LONG).show();
                 break;
             default:
                 break;

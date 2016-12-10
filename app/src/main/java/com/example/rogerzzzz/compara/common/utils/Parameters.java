@@ -9,7 +9,7 @@ public class Parameters {
         return SERVER_URL;
     }
 
-//    public static String SERVER_URL = "http://10.89.145.86:8088";
-    public static String SERVER_URL = "http://192.168.0.103:8088";
+    public static String SERVER_URL = "http://10.89.145.86:8088";
+//    public static String SERVER_URL = "http://192.168.0.103:8088";
 
 }
