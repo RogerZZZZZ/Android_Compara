@@ -172,7 +172,7 @@ public class ProductListAdapter
 
     @Override
     public void onMoveItem(int fromPosition, int toPosition) {
-        Log.d(TAG, "onMoveItem(fromPosition = " + fromPosition + ", toPosition = " + toPosition + ")");
+//        Log.d(TAG, "onMoveItem(fromPosition = " + fromPosition + ", toPosition = " + toPosition + ")");
 
         if (fromPosition == toPosition) {
             return;

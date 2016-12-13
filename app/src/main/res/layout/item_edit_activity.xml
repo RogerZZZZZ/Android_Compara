@@ -52,7 +52,7 @@
 
         <Button
             android:id="@+id/send_btn"
-            android:text="Add to List"
+            android:text="Add to Shopping Cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>

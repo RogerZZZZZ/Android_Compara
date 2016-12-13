@@ -17,6 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rogerzzzz.compara.adapter.MarketAdapter;
 import com.example.rogerzzzz.compara.common.utils.Parameters;
+import com.example.rogerzzzz.compara.models.CartItemModel;
 import com.example.rogerzzzz.compara.models.SupermarketModel;
 
 import org.json.JSONException;
@@ -32,7 +33,7 @@ import java.util.Map;
  */
 
 public class SupermarketActivity extends AppCompatActivity {
-    private ArrayList<String> list = new ArrayList<>();
+    private ArrayList<CartItemModel> list = new ArrayList<>();
     private RequestQueue queue;
     private String json;
     private ArrayList<SupermarketModel> supermarketModelArrayList;
@@ -47,7 +48,7 @@ public class SupermarketActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Supermarket List");
         setSupportActionBar(toolbar);
-        list = (ArrayList<String>) getIntent().getSerializableExtra("product_list");
+        list = (ArrayList<CartItemModel>) getIntent().getSerializableExtra("product_list");
         json = JSON.toJSONString(list);
         queue = Volley.newRequestQueue(this);
         HashMap<String, String> hashMap = new HashMap<>();

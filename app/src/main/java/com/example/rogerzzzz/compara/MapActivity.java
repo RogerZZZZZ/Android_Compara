@@ -214,14 +214,14 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
                     } else if (suggestionCities != null
                             && suggestionCities.size() > 0) {
                     } else {
-                        Log.i("--->1", "error1");
+                        Log.i("--->", "error1");
                     }
                 }
             } else {
-                Log.i("--->1", "error2");
+                Log.i("--->", "error2");
             }
         } else {
-            Log.i("--->1", "error3");
+            Log.i("--->", "error3");
         }
     }
 

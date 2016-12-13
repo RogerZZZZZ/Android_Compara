@@ -34,7 +34,7 @@ public class CollectionActivity extends AppCompatActivity implements ItemPinnedM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collection_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Collection List");
+        toolbar.setTitle("Wish List");
         setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
@@ -60,8 +60,6 @@ public class CollectionActivity extends AppCompatActivity implements ItemPinnedM
                 findViewById(R.id.container),
                 "Product has been successfully removed from collection list",
                 Snackbar.LENGTH_LONG);
-
-
         snackbar.show();
     }
 

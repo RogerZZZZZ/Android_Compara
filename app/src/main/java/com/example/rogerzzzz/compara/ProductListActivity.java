@@ -20,6 +20,7 @@ import com.example.rogerzzzz.compara.common.fragment.ExampleDataProviderFragment
 import com.example.rogerzzzz.compara.common.fragment.ItemPinnedMessageDialogFragment;
 import com.example.rogerzzzz.compara.common.utils.SharedPerferenceUtils;
 import com.example.rogerzzzz.compara.fragment.ProductListFragment;
+import com.example.rogerzzzz.compara.models.CartItemModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Cart");
+        toolbar.setTitle("Shopping Cart");
         findCheapBtn = (Button) findViewById(R.id.findCheap);
         findCheapBtn.setOnClickListener(this);
         setSupportActionBar(toolbar);
@@ -186,10 +187,11 @@ public class ProductListActivity extends AppCompatActivity implements ItemPinned
         switch (view.getId()){
             case R.id.findCheap:
                 Intent intent = new Intent(ProductListActivity.this, SupermarketActivity.class);
-                List<String> productList = new ArrayList<>();
+                List<CartItemModel> productList = new ArrayList<>();
                 int listSize = getDataProvider().getCount();
                 for(int i = 0; i < listSize; i++){
-                    productList.add(getDataProvider().getItem(i).getProductName());
+                    CartItemModel item = new CartItemModel(getDataProvider().getItem(i).getProductName(), getDataProvider().getItem(i).getNum());
+                    productList.add(item);
                 }
                 intent.putExtra("product_list", (Serializable) productList);
                 startActivity(intent);
